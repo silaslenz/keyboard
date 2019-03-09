@@ -35,7 +35,7 @@ r0b_y0 = -125;
 r0b_x1 = -10;
 r0b_y1 = 10;
 r0b_y1b = 10;
-r0b_x2 = 146.7;
+r0b_x2 = 130.7;
 r0b_x3 = 190.2;
 r0b_y3 = -95.5;
 r0b_x6 = 135.32;
@@ -43,47 +43,24 @@ r0b_y6 = -158.26;
 r0b_x4 = 155.0;
 r0b_y4 = -175.6;
 r0b_x5 = 118.65;
-rev0b_reference_points = [
-    [r0b_x0-1, r0b_y0-3],     // Bottom mid
-    [r0b_x1, r0b_y0-5],       // Bottom left
-    [r0b_x1, r0b_y1],         // Top left
-    [r0b_x2, r0b_y1b],        // Top right
-    [r0b_x3+2, r0b_y3-6.5],    // Right
-    [r0b_x6+5, r0b_y6],        // Screw
-    [r0b_x4+5, r0b_y4],        // Bottom
-    [r0b_x5+5, r0b_y4],        // Screw
-    ];
-//rev0b_screw_holes = [ for (p = rev0b_reference_points) if (p.x != r0b_x4+5) p];
 rev0b_screw_holes = [
-    //[r0b_x1+5, r0b_y0],           // Bottom left
     [r0b_x1+15.5, r0b_y0+30.65],           // Bottom left, under caps
-
-    //[r0b_x1+5, r0b_y1-5],       // Top left
-    [r0b_x1+26.5, r0b_y1-6.5],       // Top left
-    //[r0b_x1+44.5, r0b_y1-1],      // Top leftish
-
-    //[r0b_x2-13.5, r0b_y1b+3],     // Top right
+    [r0b_x1+37, r0b_y1-60],       // Top left
     [r0b_x2-6.5,  r0b_y3+40],   // Top right, under caps
-
-    //[r0b_x2+4.5,  r0b_y3+7],     // Right
     [r0b_x6-1.5, r0b_y6+0.9],      // Right, under caps
-
-    //[r0b_x5-35, r0b_y4+20],      // Bottom
     ];
 rev0b_tent_positions = [
     // [X, Y, Angle]
-    [0.8, -18, 180],
-    [0.8, -91.0, 180],
-    [146.8, -25, 5],
+    [-10, -10, 180], // Top left
+    [-10, -110, 180], // Bottom left
+    [145.8, -25, 20],
     [151.2, -117.3, -30],
     ];
 
       /* CONTROL              POINT                       CONTROL      */
-bzVec = [                     [r0b_x1,r0b_y1],            OFFSET([30, 0]), // Top left
-         OFFSET([-25, -1]),   [73,4],                     OFFSET([25, 0]), // Top
-         POLAR(25, 140),      [r0b_x2,r0b_y1b],           SHARP(), // Top right
+bzVec = [                     [r0b_x1,r0b_y1],            SHARP(), // Top left
+         SHARP(),             [r0b_x2,r0b_y1b],           SHARP(), // Top right
          POLAR(32, 153),      [r0b_x3+2,r0b_y3-6.5],      SHARP(), // Right
-         // Skip screw
          SHARP(),             [r0b_x4-1.5, r0b_y4-12.5],  POLAR(82, 149), // Bottom right
          POLAR(18, 0),        [r0b_x0-41, r0b_y0-5],      POLAR(5, 180), // Bottom mid
          SHARP(),             [r0b_x1, r0b_y0-5],         SHARP(),
@@ -109,14 +86,15 @@ module rev0b_bottom_case() {
             reset_microswitch();
             %reset_microswitch(hole = false);
         }
-        translate([13, -5.5, 0]) rotate([0, 0, 4]) {
+        /*translate([13, -5.5, 0]) rotate([0, 0, 4]) {
             micro_usb_hole();
             %micro_usb_hole(hole = false);
-        }
+        }*/
+        /*
         translate([130.5, -7.5, 0]) rotate([0, 0, -24]) {
             mini_usb_hole();
             %mini_usb_hole(hole = false);
-        }
+        }*/
     }
 }
 
@@ -149,8 +127,8 @@ if (part == "outer") {
     rev0b_bottom_case();
 
 } else if (part == "assembly") {
-    %translate([0, 0, plate_thickness + 30 * explode]) key_holes(left_keys, "keycap");
-    %translate([0, 0, plate_thickness + 20 * explode]) key_holes(left_keys, "switch");
+    //%translate([0, 0, plate_thickness + 30 * explode]) key_holes(left_keys, "keycap");
+    //%translate([0, 0, plate_thickness + 20 * explode]) key_holes(left_keys, "switch");
     rev0b_top_case();
     translate([0, 0, -bottom_case_height -20 * explode]) rev0b_bottom_case();
 
