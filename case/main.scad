@@ -3,9 +3,9 @@ include <keyboard-case.scad>
 
 $fa = 30;
 $fs = $preview ? 5 : 2;
-bezier_precision = $preview ? 0.05 : 0.5;
+bezier_precision = $preview ? 0.1 : 0.5;
 
-// Hacky way to select just the left hand keys from split iris/redox layout
+// Hacky way to select just the left hand keys from split layout
 left_keys = [ for (i = key_layout) if (key_pos(i).x < 10) i ];
 
 rev0_tent_positions = [
@@ -30,40 +30,42 @@ module rev0_bottom_case() {
 /////////////////////////////////////////////////
 // Revised case with bezier based curved outlines
 /////////////////////////////////////////////////
-r0b_x0 = 110.2;
-r0b_y0 = -125;
+r0b_x0 = 50;
+r0b_y0 = -135;
 r0b_x1 = -10;
 r0b_y1 = 10;
 r0b_y1b = 10;
 r0b_x2 = 130.7;
-r0b_x3 = 190.2;
-r0b_y3 = -95.5;
-r0b_x6 = 135.32;
-r0b_y6 = -158.26;
-r0b_x4 = 155.0;
-r0b_y4 = -175.6;
+r0b_x3 = 130;
+r0b_y3 = -110;
+r0b_x6 = 105;
+r0b_y6 = -153;
+r0b_x4 = 135;
+r0b_y4 = -185;
 r0b_x5 = 118.65;
 rev0b_screw_holes = [
-    [r0b_x1+15.5, r0b_y0+30.65],           // Bottom left, under caps
-    [r0b_x1+37, r0b_y1-60],       // Top left
-    [r0b_x2-6.5,  r0b_y3+40],   // Top right, under caps
-    [r0b_x6-1.5, r0b_y6+0.9],      // Right, under caps
+    [r0b_x1+13, r0b_y0+30],           // Bottom left, under caps
+    [r0b_x1+32, r0b_y1-59],       // Top left
+    [r0b_x2-49.5,  r0b_y1b-53],   // Top right, under caps
+    [r0b_x6, r0b_y6],      // Right, under caps
     ];
 rev0b_tent_positions = [
     // [X, Y, Angle]
     [-10, -10, 180], // Top left
     [-10, -110, 180], // Bottom left
-    [145.8, -25, 20],
-    [151.2, -117.3, -30],
+    [130, -10, 0], // Top right
+    [160, -142, -30], // Bottom right
     ];
 
       /* CONTROL              POINT                       CONTROL      */
 bzVec = [                     [r0b_x1,r0b_y1],            SHARP(), // Top left
-         SHARP(),             [r0b_x2,r0b_y1b],           SHARP(), // Top right
-         POLAR(32, 153),      [r0b_x3+2,r0b_y3-6.5],      SHARP(), // Right
-         SHARP(),             [r0b_x4-1.5, r0b_y4-12.5],  POLAR(82, 149), // Bottom right
-         POLAR(18, 0),        [r0b_x0-41, r0b_y0-5],      POLAR(5, 180), // Bottom mid
-         SHARP(),             [r0b_x1, r0b_y0-5],         SHARP(),
+         SHARP(),             [r0b_x2,r0b_y1b],           OFFSET([0,0]), // Top right
+         SHARP(),             [r0b_x3,r0b_y3],            SHARP(), // Right
+         SHARP(),             [r0b_x3+37,r0b_y3-20],            SHARP(), // Right
+
+         SHARP(),             [r0b_x4, r0b_y4],           SHARP(), // Bottom right
+         SHARP(),             [r0b_x0, r0b_y0],           SHARP(), // Bottom mid
+         SHARP(),             [r0b_x1, r0b_y0],         SHARP(),
          SHARP(),             [r0b_x1, r0b_y1],
     ];
 b1 = Bezier(bzVec, precision = bezier_precision);
