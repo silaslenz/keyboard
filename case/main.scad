@@ -37,11 +37,11 @@ r0b_y1 = 10;
 r0b_y1b = 10;
 r0b_x2 = 130.7;
 r0b_x3 = 130;
-r0b_y3 = -110;
+r0b_y3 = -120;
 r0b_x6 = 105;
 r0b_y6 = -153;
-r0b_x4 = 135;
-r0b_y4 = -185;
+r0b_x4 = 125;
+r0b_y4 = -178;
 r0b_x5 = 118.65;
 rev0b_screw_holes = [
     [r0b_x1+13, r0b_y0+30],           // Bottom left, under caps
@@ -54,15 +54,14 @@ rev0b_tent_positions = [
     [-10, -10, 180], // Top left
     [-10, -110, 180], // Bottom left
     [130, -10, 0], // Top right
-    [160, -142, -30], // Bottom right
+    [142, -145, -30], // Bottom right
     ];
 
       /* CONTROL              POINT                       CONTROL      */
 bzVec = [                     [r0b_x1,r0b_y1],            SHARP(), // Top left
          SHARP(),             [r0b_x2,r0b_y1b],           OFFSET([0,0]), // Top right
          SHARP(),             [r0b_x3,r0b_y3],            SHARP(), // Right
-         SHARP(),             [r0b_x3+37,r0b_y3-20],            SHARP(), // Right
-
+         SHARP(),             [r0b_x3+20,r0b_y3-11],      SHARP(), // Right
          SHARP(),             [r0b_x4, r0b_y4],           SHARP(), // Bottom right
          SHARP(),             [r0b_x0, r0b_y0],           SHARP(), // Bottom mid
          SHARP(),             [r0b_x1, r0b_y0],         SHARP(),
