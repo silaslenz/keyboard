@@ -1,12 +1,15 @@
 # Keyboard
 
-A split keyboard in its planning stage. Current layout: http://www.keyboard-layout-editor.com/#/gists/ab432df886ce0812838ef99259da4404
+A split keyboard. Current layout: http://www.keyboard-layout-editor.com/#/gists/ab432df886ce0812838ef99259da4404
+
+See [keyboards/sisplit](https://github.com/silaslenz/qmk_firmware/tree/1df4aca1ef950e725eda1459dbb818511b1fa2ed/keyboards/sisplit) for firmware.
 
 ## Targets
 * Split keyboard
 * 3D-printable except for electronics/switches.
 * Roughly 85%-size in Ergodox/Microsoft sculpt-style (F-row, thumb cluster and arrow keys but no numpad).
 * Tenting
+* Running QMK
 
 ## Component list
 * 88x [Gateron Brown](https://www.banggood.com/10PCS-3-Pin-Mechanical-Keyboard-Switch-Brown-Switch-for-Gateron-Keyboard-Replacement-p-1119473.html): ~$30
