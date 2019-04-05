@@ -2,7 +2,7 @@
 
 A split keyboard. Current layout: http://www.keyboard-layout-editor.com/#/gists/ab432df886ce0812838ef99259da4404
 
-See [keyboards/sisplit](https://github.com/silaslenz/qmk_firmware/tree/1df4aca1ef950e725eda1459dbb818511b1fa2ed/keyboards/sisplit) for firmware.
+See [keyboards/sisplit](https://github.com/silaslenz/qmk_firmware/tree/1df4aca1ef950e725eda1459dbb818511b1fa2ed/keyboards/sisplit) for firmware and run `make sisplit/rev2:default:avrdude` to install.
 
 ## Targets
 * Split keyboard
